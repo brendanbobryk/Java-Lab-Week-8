@@ -1,7 +1,6 @@
 package com.cis084javaprogramming;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 
 /**
  * Name: Brendan Bobryk
