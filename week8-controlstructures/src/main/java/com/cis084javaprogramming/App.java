@@ -44,21 +44,25 @@ public class App {
         // Determines if the user is eligible for a vaccination
         eligible = (isOver65 || hasMedical);
 
+        // If not eligible, writes message to user and closes the program
         if (!eligible) {
             System.out.println("You are not eligible for a vaccination.");
             input.close();
             return;
         }
 
+        // Prompts the user for their vaccination choice
         System.out.println("Which vaccination would you like? (#1-8): ");
 
         String[] vaccinations = { "pfizer-alpha", "moderna-alpha", "johnson-alpha", "pfizer-omega", "pfizer-kappa",
                 "moderna-delta", "moderna-gamma", "moderna-zeta" };
 
+        // Prints out vaccination choice options
         for (int i = 0; i < vaccinations.length; i++) {
             System.out.println(i + 1 + ". " + vaccinations[i]);
         }
 
+        // Retrieves vaccination choice
         vaccinationChoice = input.nextInt();
 
         // Closes scanner
