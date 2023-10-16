@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class App {
     public static void main(String[] args) {
         // Declaring variables
-        int age;
+        int age, vaccinationChoice;
         boolean teacher, isOver65, hasMedical, eligible;
         String name;
 
@@ -50,20 +50,22 @@ public class App {
             return;
         }
 
-        System.out.println("Which vaccination would you like?");
+        System.out.println("Which vaccination would you like? (#1-8): ");
 
         String[] vaccinations = { "pfizer-alpha", "moderna-alpha", "johnson-alpha", "pfizer-omega", "pfizer-kappa",
                 "moderna-delta", "moderna-gamma", "moderna-zeta" };
 
-        for (int i; i < vaccinations.length; i++) {
+        for (int i = 0; i < vaccinations.length; i++) {
             System.out.println(i + 1 + ". " + vaccinations[i]);
         }
+
+        vaccinationChoice = input.nextInt();
 
         // Closes scanner
         input.close();
 
         // Displays results
         System.out.println(name + " is a teacher who is " + age + " years old.");
-        System.out.println("They have chosen the vaccination: " + vaccination[input]);
+        System.out.println("They have chosen the vaccination: " + vaccinations[vaccinationChoice - 1]);
     }
 }
