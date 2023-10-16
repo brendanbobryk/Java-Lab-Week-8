@@ -1,6 +1,7 @@
 package com.cis084javaprogramming;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * Name: Brendan Bobryk
@@ -13,11 +14,14 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         // Declaring variables
-        boolean teacher, isOver65, hasMedical;
-        String eligible;
+        int age;
+        boolean teacher, isOver65, hasMedical, eligible;
+        String name;
 
         // Opens scanner and displays first prompt for user
         Scanner input = new Scanner(System.in);
+        System.out.println("What is your name?");
+        name = input.nextLine();
         System.out.println("Are you a teacher? (Y/N): ");
         char answer = input.next().charAt(0);
 
@@ -30,23 +34,30 @@ public class App {
         }
 
         // Continues prompting the user for information and retains the results
-        System.out.println("Are you over 65 years old? (Y/N): ");
-        answer = input.next().charAt(0);
-        isOver65 = (answer == 'y' || answer == 'Y');
+        System.out.println("How old are you?");
+        age = input.nextInt();
+        isOver65 = (age > 65);
         System.out.println("Do you have a medical condition? (Y/N): ");
         answer = input.next().charAt(0);
         hasMedical = (answer == 'y' || answer == 'Y');
 
         // Determines if the user is eligible for a vaccination
-        eligible = (isOver65 || hasMedical) ? "Yes" : "No";
+        eligible = (isOver65 || hasMedical);
+
+        if (!eligible) {
+            System.out.println("You are not eligible for a vaccination.");
+            input.close();
+            return;
+        }
+
+        String[] vaccinations = { "pfizer-alpha", "moderna-alpha", "johnson-alpha", "pfizer-omega", "pfizer-kappa",
+                "moderna-delta", "moderna-gamma", "moderna-zeta" };
 
         // Closes scanner
         input.close();
 
         // Displays results
-        System.out.println("Is a teacher: " + teacher);
-        System.out.println("Is over 65 years old: " + isOver65);
-        System.out.println("Has a medical condition: " + hasMedical);
-        System.out.println("Can be given a vaccination: " + eligible);
+        System.out.println(name + " is a teacher who is " + age + "years old.");
+        System.out.println("They have chosen the vaccination: " + vaccination[input]);
     }
 }
